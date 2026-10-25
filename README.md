@@ -1,106 +1,110 @@
-# Ford Car Price Prediction
+# Ford Car Price Prediction 🚗
 
-## 📌 Project Overview
+## Overview
 
-This project explores Ford car data using Python and data analysis libraries to understand the factors that influence car prices. It includes data inspection, exploratory data analysis (EDA), and visualizations to identify patterns and relationships within the dataset.
+This project explores a dataset of Ford vehicles and builds a baseline machine-learning model to estimate car prices. The notebook covers data inspection, exploratory data analysis (EDA), preprocessing, model training, and evaluation.
 
-## 🎯 Objectives
+The project is intended as a practical Python data-analysis and machine-learning exercise.
 
-- Explore and understand the Ford car dataset.
-- Analyze the distribution of car prices.
-- Identify relationships between numerical variables.
-- Examine price variations across different Ford car models.
-- Visualize patterns and potential outliers in the data.
+## Objectives
 
-## 🛠️ Technologies & Libraries
+- Explore the structure and quality of the Ford car dataset.
+- Visualize car-price distributions and compare prices across categories.
+- Examine relationships between numerical features.
+- Prepare numerical and categorical features for machine learning.
+- Train a Linear Regression baseline and evaluate its predictions.
 
-- **Python** — Programming language
-- **NumPy** — Numerical computing
-- **Pandas** — Data manipulation and analysis
-- **Matplotlib** — Data visualization
-- **Seaborn** — Statistical visualization
-- **Jupyter Notebook** — Interactive analysis
+## Dataset
 
-## 📂 Project Structure
+The notebook expects a CSV file named `ford.csv`. The original dataset contains 17,966 rows and 9 columns:
 
-```text
-ford-car-price-prediction/
-│
-├── ford_car_price_prediction.ipynb
-├── ford.csv
-└── README.md
-```
+| Column | Description |
+|---|---|
+| `model` | Ford vehicle model |
+| `year` | Year of manufacture |
+| `price` | Vehicle price (prediction target) |
+| `transmission` | Transmission type |
+| `mileage` | Distance travelled |
+| `fuelType` | Fuel type |
+| `tax` | Vehicle tax |
+| `mpg` | Miles per gallon |
+| `engineSize` | Engine size |
 
-*Note: The dataset file `ford.csv` should be placed in the appropriate location before running the notebook.*
+Make sure you have permission to use and redistribute the dataset before committing `ford.csv` to a public repository.
 
-## 📊 Project Workflow
+## Tools and Libraries
 
-### 1. Data Loading
-- Import the required Python libraries.
-- Load the Ford car dataset using Pandas.
+- Python
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Jupyter Notebook
 
-### 2. Data Inspection
-- Examine the dataset's structure and dimensions.
-- Review column data types and summary statistics.
-- Check for missing values.
+## Workflow
 
-### 3. Exploratory Data Analysis (EDA)
-- Analyze the distribution of car prices using a histogram.
-- Explore correlations between numerical features using a heatmap.
-- Compare prices across different car models using boxplots.
-- Investigate patterns, variations, and potential outliers.
+### 1. Data inspection
+Load the CSV, review data types and descriptive statistics, and check for missing values.
 
-### 4. Data Visualization
-Use Matplotlib and Seaborn to create visualizations that make trends and relationships in the dataset easier to understand.
+### 2. Exploratory data analysis
+The notebook includes:
+- A histogram with a KDE curve to inspect the price distribution.
+- A correlation heatmap for numerical features.
+- Boxplots comparing prices by model, transmission, and fuel type.
 
-## 🚀 How to Run the Project
+### 3. Preprocessing
+Numerical features (`year`, `mileage`, `tax`, `mpg`, and `engineSize`) are scaled, while categorical features (`model`, `transmission`, and `fuelType`) are one-hot encoded. Preprocessing is performed as part of a Scikit-learn pipeline to keep the train/test workflow consistent.
 
-1. Clone this repository:
+### 4. Model training
+A Linear Regression model is trained using an 80/20 train-test split with `random_state=42`.
+
+### 5. Evaluation
+The notebook calculates:
+- **R²** — proportion of target-price variation explained by the model.
+- **Adjusted R²** — R² adjusted for the number of input features.
+- **MAE** — mean absolute prediction error.
+- **RMSE** — root mean squared prediction error.
+
+Evaluation results are calculated when the notebook is run; they are not presented here as fixed benchmark scores.
+
+## Getting Started
+
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/ford-car-price-prediction.git
+   git clone https://github.com/1kunal2006/Ford-Car-Price-Prediction.git
+   cd Ford-Car-Price-Prediction
    ```
 
-2. Navigate to the project directory:
+2. Install dependencies:
 
    ```bash
-   cd ford-car-price-prediction
+   pip install numpy pandas matplotlib seaborn scikit-learn jupyter
    ```
 
-3. Install the required libraries:
+3. Place `ford.csv` in the project directory. The notebook checks for a local `ford.csv` and also supports the common Google Colab path `/content/ford.csv`.
 
-   ```bash
-   pip install numpy pandas matplotlib seaborn jupyter
-   ```
-
-4. Ensure `ford.csv` is available at the file path expected by the notebook. The current notebook reads the dataset from `/content/ford.csv`; update this path if necessary.
-
-5. Launch Jupyter Notebook:
+4. Start Jupyter:
 
    ```bash
    jupyter notebook
    ```
 
-6. Open `ford_car_price_prediction.ipynb` and run the cells.
+5. Open `ford_car_price_prediction.ipynb` and run the cells from top to bottom.
 
-## 🔍 Key Areas of Analysis
+## Future Improvements
 
-- Car price distribution
-- Relationships between numerical variables
-- Price differences across Ford models
-- Missing-value inspection
-- Potential outliers and trends
+- Compare Linear Regression with tree-based models such as Random Forest Regressor.
+- Tune model parameters and use cross-validation.
+- Investigate outliers and potential data-quality issues.
+- Add prediction-versus-actual and residual plots.
+- Save a trained model and build a simple prediction interface.
 
-## 📈 Results
-
-The notebook focuses on exploratory data analysis and visualizing the Ford car dataset. The charts and summary statistics can help reveal patterns in car prices and relationships among available features.
-
-*Specific findings and numerical conclusions should be added after reviewing the actual analysis outputs.*
-
-## 👨‍💻 Author
+## Author
 
 **Kunal**
 
-## 📄 License
+## License
 
-This project is available for educational and learning purposes. Add a license file if you intend to specify formal usage and redistribution permissions.
+This repository is shared for educational purposes. Add a license file if you want to define formal permissions for reuse and redistribution.
